@@ -14,7 +14,7 @@ function init() {
     addNewNote(notes);
     return;
   }
-
+  addToStorage(...initialNotes);
   addNewNote(initialNotes);
 }
 

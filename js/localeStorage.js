@@ -1,8 +1,8 @@
 import { KEY_LOCAL_STORAGE } from "./shared/constante.js";
 
-export function addToStorage(data, ...args) {
+export function addToStorage(...args) {
   const storageData = getFromStorage();
-  const notesList = [...storageData, data, ...args];
+  const notesList = [...storageData, ...args];
   localStorage.setItem(KEY_LOCAL_STORAGE, JSON.stringify(notesList));
 }
 

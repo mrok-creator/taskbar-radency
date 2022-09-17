@@ -1,6 +1,7 @@
 export function createListMarkup(data) {
   const listMarkup = data.map((item) => createNoteMarkup(item));
-  return listMarkup.join();
+
+  return listMarkup.join("");
 }
 export function createNoteMarkup({ id, date, title, text, type, dates }) {
   return `<tr data-id="${id}">
@@ -21,39 +22,16 @@ export function createNoteMarkup({ id, date, title, text, type, dates }) {
           <td>${text}</td>
           <td>${dates}</td>
            <td class="btnThumb">
-            <button class="btn" type="button" data-id="${id}" data-action="edit">
-              <svg
-                class="icon"
-                width="30"
-                height="30"
-                aria-label="Notes control button"
-              >
-                <use class="" href="./images/svg/sprite.svg#edit"></use>
-              </svg>
+            <button class="btn edit" type="button" data-id="${id}" data-action="edit">
+              
             </button>
 
-            <button class="btn" type="button" data-id="${id}" data-action="zip">
-              <svg
-                class="icon"
-                width="30"
-                height="30"
-                aria-label="Notes control button"
-              >
-                <use class="" href="./images/svg/sprite.svg#archive-add"></use>
-              </svg>
+            <button class="btn zip" type="button" data-id="${id}" data-action="zip">
+             
             </button>
 
-            <button class="btn" type="button" data-id="${id}"  data-action="trash">
-              <svg
-                class="icon"
-                width="30"
-                height="30"
-                aria-label="Notes control button"
-                data-action="trash"
-                data-id="${id}" 
-              >
-                <use class="" href="./images/svg/sprite.svg#trash"></use>
-              </svg>
+            <button class="btn trash" type="button" data-id="${id}"  data-action="trash">
+              
             </button>
           </td>
         </tr>`;

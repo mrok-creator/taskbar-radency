@@ -78,13 +78,29 @@ ul {
 }
 
 .btn {
+  height: 35px;
+  width: 35px;
+  margin-left: 10px;
   background-color: transparent;
-  border: none;
+  border: 2px solid;
+  border-color: #f2f2f2;
+  border-radius: 5px;
   color: #000;
 }
 
+.btn.trash {
+  background-image: url("../images/svg/trash.svg");
+}
+.btn.zip {
+  background-image: url("../images/svg/archive-add.svg");
+}
+.btn.edit {
+  background-image: url("../images/svg/edit.svg");
+}
+
 .btn:hover {
-  color: #04aa6d;
+  border-color: #04aa6d;
+  scale: 1.1;
 }
 
 .icon {

@@ -39,10 +39,12 @@ function deleteNotes(e) {
     return;
   }
   const doneTaskId = e.target.dataset.id;
-  console.log(doneTaskId);
+
+  const td = e.target.parentNode;
+  const tr = td.parentNode;
 
   deleteFromStorage(doneTaskId);
-  e.target.parentNode.remove();
+  tr.remove();
 }
 
 notesListRef.addEventListener("click", deleteNotes);
