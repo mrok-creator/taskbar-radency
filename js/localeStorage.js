@@ -1,8 +1,8 @@
 import { KEY_LOCAL_STORAGE } from "./shared/constante.js";
 
-export function addToStorage(data) {
+export function addToStorage(data, ...args) {
   const storageData = getFromStorage();
-  const notesList = [...storageData, data];
+  const notesList = [...storageData, data, ...args];
   localStorage.setItem(KEY_LOCAL_STORAGE, JSON.stringify(notesList));
 }
 
@@ -12,4 +12,18 @@ export function getFromStorage() {
     return JSON.parse(strNotes);
   }
   return [];
+}
+
+export function deleteFromStorage(id) {
+  const notes = getFromStorage();
+
+  localStorage.removeItem(KEY_LOCAL_STORAGE);
+
+  const res = notes.filter((item) => item.id !== id);
+
+  if (!res.length) {
+    return;
+  }
+
+  addToStorage(...res);
 }

@@ -2,8 +2,21 @@ import { KEY_LOCAL_STORAGE } from "./shared/constante.js";
 import { formRef, notesListRef, archiveListRef } from "./shared/refs.js";
 
 import { addToStorage, getFromStorage } from "./localeStorage.js";
-import createNoteData from "./noteDataModel.js";
-import { createListMarkup, createNoteMarkup } from "./markup/notesMarkup.js";
+import { createNoteData, addNewNote } from "./noteModel.js";
+// import { createListMarkup, createNoteMarkup } from "./markup/notesMarkup.js";
+
+import initialNotes from "../initNotes.js";
+
+function init() {
+  const notes = getFromStorage();
+
+  if (notes.length > 0) {
+    addNewNote(notes);
+    return;
+  }
+
+  addNewNote(initialNotes);
+}
 
 function onSubmitCreate(event) {
   event.preventDefault();
@@ -27,19 +40,6 @@ function onSubmitCreate(event) {
   event.currentTarget.reset();
 }
 
-function addNewNote(data) {
-  let markup;
-  if (!Array.isArray(data)) {
-    markup = createNoteMarkup(data);
-  } else {
-    markup = createListMarkup(data);
-  }
-
-  addMarkup(markup);
-}
-
-function addMarkup(data) {
-  notesListRef.insertAdjacentHTML("afterbegin", data);
-}
+init();
 
 formRef.addEventListener("submit", onSubmitCreate);

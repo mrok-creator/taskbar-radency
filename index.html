@@ -47,18 +47,43 @@
         </tr>
       </thead>
 
-      <tbody id="noteList">
+      <tbody id="noteList"></tbody>
+    </table>
+
+    <table class="table">
+      <thead>
         <tr>
-          <td>Name</td>
-          <td>Created</td>
+          <th>Name</th>
+          <th>Created</th>
+          <th>Category</th>
+          <th>Dates</th>
+        </tr>
+      </thead>
+
+      <tbody id="archiveList">
+        <tr>
           <td>Category</td>
           <td>Content</td>
           <td>Dates</td>
-          <td>btn</td>
+          <td class="btnThumb">
+            <button class="btn" type="button" id="unzip">
+              <svg
+                class="icon"
+                width="30"
+                height="30"
+                aria-label="Notes control button"
+              >
+                <use
+                  class=""
+                  href="./images/svg/sprite.svg#archive-unpack"
+                ></use>
+              </svg>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
-    <ul id="archiveList"></ul>
+
     <script src="./js/index.js" type="module"></script>
   </body>
 </html>
