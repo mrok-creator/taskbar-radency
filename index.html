@@ -50,35 +50,23 @@
       <tbody id="noteList"></tbody>
     </table>
 
-    <table class="table">
+    <table class="table archived">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Created</th>
-          <th>Category</th>
-          <th>Dates</th>
+          <th>Note Category</th>
+          <th>Active</th>
+          <th>Archived</th>
+          <th></th>
         </tr>
       </thead>
 
       <tbody id="archiveList">
         <tr>
-          <td>Category</td>
-          <td>Content</td>
-          <td>Dates</td>
+          <td>Note Category</td>
+          <td>Active number</td>
+          <td>Archived number</td>
           <td class="btnThumb">
-            <button class="btn" type="button" id="unzip">
-              <svg
-                class="icon"
-                width="30"
-                height="30"
-                aria-label="Notes control button"
-              >
-                <use
-                  class=""
-                  href="./images/svg/sprite.svg#archive-unpack"
-                ></use>
-              </svg>
-            </button>
+            <button class="btn unzip" type="button" id="unzip"></button>
           </td>
         </tr>
       </tbody>
