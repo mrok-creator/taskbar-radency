@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note List</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <form id="notesForm" class="header">
+      <label for="title" class="input-title"> Name your note: </label>
+
+      <label for="content" class="input-title">
+        Enter content of your note:
+      </label>
+
+      <label for="types" class="input-title"> Choose a type: </label>
+
+      <input
+        type="text"
+        placeholder="Note`s title"
+        name="title"
+        class="input"
+      />
+      <input type="text" placeholder="Text" name="content" class="input" />
+
+      <select id="type" name="types" size="1" class="input">
+        <option value="idea">Idea</option>
+        <option value="task">Task</option>
+        <option value="quote">Quote</option>
+        <option value="random-thought">Random Thought</option>
+      </select>
+
+      <button type="submit" class="addBtn">Add</button>
+    </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Created</th>
+          <th>Category</th>
+          <th>Content</th>
+          <th>Dates</th>
+          <th>btn</th>
+        </tr>
+      </thead>
+
+      <tbody id="noteList">
+        <tr>
+          <td>Name</td>
+          <td>Created</td>
+          <td>Category</td>
+          <td>Content</td>
+          <td>Dates</td>
+          <td>btn</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul id="archiveList"></ul>
+    <script src="./js/index.js" type="module"></script>
+  </body>
+</html>

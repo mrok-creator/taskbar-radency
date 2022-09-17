@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  min-width: 250px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+  font-size: 16;
+}
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
+  color: white;
+  background-color: #04aa6d;
+}
+
+/* .header:last-child {
+  grid-column-start: 1;
+  grid-column-end: 3;
+} */
+
+.addBtn {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+/* notes table style */
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table td,
+.table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #ddd;
+}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+}
