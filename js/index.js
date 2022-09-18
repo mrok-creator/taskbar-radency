@@ -1,9 +1,19 @@
-import { KEY_LOCAL_STORAGE } from "./shared/constante.js";
-import { formRef, notesListRef, archiveListRef } from "./shared/refs.js";
+//! import { KEY_LOCAL_STORAGE } from "./shared/constante.js";
+import {
+  formRef,
+  notesListRef,
+  archiveListRef,
+  infoListRef,
+} from "./shared/refs.js";
 
 import { addToStorage, getFromStorage } from "./localeStorage.js";
-import { createNoteData, addNewNote } from "./noteModel.js";
-// import { createListMarkup, createNoteMarkup } from "./markup/notesMarkup.js";
+import {
+  createNoteData,
+  addNewNote,
+  deleteNotes,
+  addNotesToArchive,
+} from "./noteModel.js";
+import { showArchivedNotes } from "./modal.js";
 
 import initialNotes from "../initNotes.js";
 
@@ -41,5 +51,11 @@ function onSubmitCreate(event) {
 }
 
 init();
-
+// listener for crating note
 formRef.addEventListener("submit", onSubmitCreate);
+// listener for note btn
+notesListRef.addEventListener("click", deleteNotes);
+notesListRef.addEventListener("click", addNotesToArchive);
+
+//  listener for work with archived data
+infoListRef.addEventListener("click", showArchivedNotes);

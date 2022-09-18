@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Note List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css"
+    />
+    <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
@@ -50,7 +55,10 @@
       <tbody id="noteList"></tbody>
     </table>
 
-    <table class="table archived">
+    <!-- modal  -->
+
+    <!-- fixed content info -->
+    <table class="table">
       <thead>
         <tr>
           <th>Note Category</th>
@@ -60,18 +68,103 @@
         </tr>
       </thead>
 
-      <tbody id="archiveList">
+      <tbody id="infoTable">
         <tr>
-          <td>Note Category</td>
-          <td>Active number</td>
-          <td>Archived number</td>
+          <td>
+            <svg
+              class="icon"
+              width="30"
+              height="30"
+              aria-label="Notes type icon"
+            >
+              <use class="" href="./images/svg/sprite.svg#idea"></use>
+            </svg>
+            Idea
+          </td>
+          <td id="activeIdea">Active number</td>
+          <td id="archivedIdea">Archived number</td>
           <td class="btnThumb">
-            <button class="btn unzip" type="button" id="unzip"></button>
+            <button
+              class="btn list"
+              type="button"
+              data-action="showList"
+              data-type="idea"
+            ></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <svg
+              class="icon"
+              width="30"
+              height="30"
+              aria-label="Notes type icon"
+            >
+              <use class="" href="./images/svg/sprite.svg#task"></use>
+            </svg>
+            Task
+          </td>
+          <td id="activeTask">Active number</td>
+          <td id="archivedTask">Archived number</td>
+          <td class="btnThumb">
+            <button
+              class="btn list"
+              type="button"
+              data-type="task"
+              data-action="showList"
+            ></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <svg
+              class="icon"
+              width="30"
+              height="30"
+              aria-label="Notes type icon"
+            >
+              <use class="" href="./images/svg/sprite.svg#quote"></use>
+            </svg>
+            Quote
+          </td>
+          <td id="activeQuote">Active number</td>
+          <td id="archivedQuote">Archived number</td>
+          <td class="btnThumb">
+            <button
+              class="btn list"
+              type="button"
+              data-type="quote"
+              data-action="showList"
+            ></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <svg
+              class="icon"
+              width="30"
+              height="30"
+              aria-label="Notes type icon"
+            >
+              <use class="" href="./images/svg/sprite.svg#random-thought"></use>
+            </svg>
+            Random Thought
+          </td>
+          <td id="activeThought">Active number</td>
+          <td id="archivedThought">Archived number</td>
+          <td class="btnThumb">
+            <button
+              class="btn list"
+              type="button"
+              data-action="showList"
+              data-type="random-thought"
+            ></button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <script src="./js/index.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
   </body>
 </html>

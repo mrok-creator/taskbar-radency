@@ -1,5 +1,9 @@
 import { createListMarkup, createNoteMarkup } from "./markup/notesMarkup.js";
-import { deleteFromStorage } from "./localeStorage.js";
+import {
+  deleteFromStorage,
+  getFromStorage,
+  addToArchiveStorage,
+} from "./localeStorage.js";
 
 import { notesListRef } from "./shared/refs.js";
 
@@ -17,6 +21,18 @@ export function createNoteData(data) {
   };
 }
 
+export function addMarkup(data) {
+  notesListRef.insertAdjacentHTML("beforeend", data);
+}
+
+export function deleteFromList(id, element) {
+  const td = element.parentNode;
+  const tr = td.parentNode;
+
+  deleteFromStorage(id);
+  tr.remove();
+}
+
 export function addNewNote(data) {
   let markup;
   if (!Array.isArray(data)) {
@@ -28,23 +44,25 @@ export function addNewNote(data) {
   addMarkup(markup);
 }
 
-export function addMarkup(data) {
-  notesListRef.insertAdjacentHTML("beforeend", data);
-}
-
-deleteNotes;
-
-function deleteNotes(e) {
+export function deleteNotes(e) {
   if (e.target.dataset.action !== "trash") {
     return;
   }
-  const doneTaskId = e.target.dataset.id;
+  const taskId = e.target.dataset.id;
 
-  const td = e.target.parentNode;
-  const tr = td.parentNode;
-
-  deleteFromStorage(doneTaskId);
-  tr.remove();
+  deleteFromList(taskId, e.target);
 }
 
-notesListRef.addEventListener("click", deleteNotes);
+export function addNotesToArchive(e) {
+  if (e.target.dataset.action !== "zip") {
+    return;
+  }
+
+  // get current note
+  const taskId = e.target.dataset.id;
+  const noteData = getFromStorage().filter((item) => item.id === taskId)[0];
+
+  addToArchiveStorage(noteData.type, noteData);
+
+  deleteFromList(taskId, e.target);
+}

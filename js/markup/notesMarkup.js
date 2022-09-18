@@ -10,7 +10,7 @@ export function createNoteMarkup({ id, date, title, text, type, dates }) {
               class="icon"
               width="30"
               height="30"
-              aria-label="Notes control button"
+              aria-label="Notes type icon"
             >
               <use class="" href="./images/svg/sprite.svg#${returnLogo(
                 type
