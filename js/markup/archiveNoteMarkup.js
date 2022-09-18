@@ -11,13 +11,13 @@ export function archivedMarkup(type) {
 
   const elementList = notes
     .map(
-      ({ title, text, id }) => `
+      ({ title, text, id, type }) => `
         <tr data-id='${id}'>
           <td>${title}</td>
           <td>${text}</td>
 
           <td class="btnThumb">
-            <button class="btn unzip" type="button" id="unzip"></button>
+            <button class="btn unzip" type="button" data-action="unzip" data-id='${id}' data-type='${type}' ></button>
           </td>
         </tr>
       

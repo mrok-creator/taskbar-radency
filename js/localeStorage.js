@@ -47,7 +47,7 @@ export function getFromArchivedStorage(type) {
   return [];
 }
 
-export function deleteFromArchiveStorage(type) {
+export function deleteFromArchiveStorage(type, id) {
   const notes = getFromArchivedStorage(type);
 
   localStorage.removeItem(`${KEY_LOCAL_ARCHIVE}-${type}`);
@@ -58,5 +58,5 @@ export function deleteFromArchiveStorage(type) {
     return;
   }
 
-  addToStorage(...res);
+  addToArchiveStorage(type, ...res);
 }

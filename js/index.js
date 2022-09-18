@@ -1,10 +1,5 @@
 //! import { KEY_LOCAL_STORAGE } from "./shared/constante.js";
-import {
-  formRef,
-  notesListRef,
-  archiveListRef,
-  infoListRef,
-} from "./shared/refs.js";
+import { formRef, notesListRef, infoListRef } from "./shared/refs.js";
 
 import { addToStorage, getFromStorage } from "./localeStorage.js";
 import {
@@ -51,6 +46,7 @@ function onSubmitCreate(event) {
 }
 
 init();
+
 // listener for crating note
 formRef.addEventListener("submit", onSubmitCreate);
 // listener for note btn

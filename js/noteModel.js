@@ -3,6 +3,9 @@ import {
   deleteFromStorage,
   getFromStorage,
   addToArchiveStorage,
+  getFromArchivedStorage,
+  addToStorage,
+  deleteFromArchiveStorage,
 } from "./localeStorage.js";
 
 import { notesListRef } from "./shared/refs.js";
@@ -25,13 +28,13 @@ export function addMarkup(data) {
   notesListRef.insertAdjacentHTML("beforeend", data);
 }
 
-export function deleteFromList(id, element) {
+export function deleteFromList(element) {
   const td = element.parentNode;
   const tr = td.parentNode;
-
-  deleteFromStorage(id);
   tr.remove();
 }
+
+// active notes
 
 export function addNewNote(data) {
   let markup;
@@ -48,10 +51,13 @@ export function deleteNotes(e) {
   if (e.target.dataset.action !== "trash") {
     return;
   }
-  const taskId = e.target.dataset.id;
+  const noteId = e.target.dataset.id;
 
-  deleteFromList(taskId, e.target);
+  deleteFromList(e.target);
+  deleteFromStorage(noteId);
 }
+
+// archive notes
 
 export function addNotesToArchive(e) {
   if (e.target.dataset.action !== "zip") {
@@ -59,10 +65,30 @@ export function addNotesToArchive(e) {
   }
 
   // get current note
-  const taskId = e.target.dataset.id;
-  const noteData = getFromStorage().filter((item) => item.id === taskId)[0];
+  const noteId = e.target.dataset.id;
+  const noteData = getFromStorage().filter((item) => item.id === noteId)[0];
 
   addToArchiveStorage(noteData.type, noteData);
 
-  deleteFromList(taskId, e.target);
+  deleteFromList(e.target);
+  deleteFromStorage(noteId);
+}
+
+export function unzipNote(e) {
+  if (e.target.dataset.action !== "unzip") {
+    return;
+  }
+
+  // get required info
+  const { id, type } = e.target.dataset;
+
+  const noteData = getFromArchivedStorage(type).filter(
+    (item) => item.id === id
+  );
+
+  addToStorage(...noteData);
+
+  deleteFromList(e.target);
+  deleteFromArchiveStorage(type, id);
+  window.location.reload();
 }
