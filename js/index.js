@@ -7,6 +7,7 @@ import {
   addNewNote,
   deleteNotes,
   addNotesToArchive,
+  editNotes,
 } from "./noteModel.js";
 import { showArchivedNotes } from "./modal.js";
 import { insertActiveNotesCount } from "./counter.js";
@@ -26,12 +27,12 @@ function init() {
   insertActiveNotesCount();
 }
 
-function onSubmitCreate(event) {
-  event.preventDefault();
+function onSubmitCreate(e) {
+  e.preventDefault();
 
   const {
     elements: { title, content, types },
-  } = event.currentTarget;
+  } = e.currentTarget;
 
   if (title.value.trim() === "" || content.value.trim() === "") {
     alert("Please fill in all the fields!");
@@ -46,16 +47,23 @@ function onSubmitCreate(event) {
   addToStorage(note);
   addNewNote(note);
   insertActiveNotesCount();
-  event.currentTarget.reset();
+  e.currentTarget.reset();
 }
 
 init();
 
 // listener for crating note
 formRef.addEventListener("submit", onSubmitCreate);
+
 // listener for note btn
 notesListRef.addEventListener("click", deleteNotes);
 notesListRef.addEventListener("click", addNotesToArchive);
+
+// editor listener
+notesListRef.addEventListener("click", editNotes);
+
+// const editorFormRef = modalContentRef.querySelector("#edit");
+// editorFormRef.addEventListener("submit", confirmEditions);
 
 //  listener for work with archived data
 infoListRef.addEventListener("click", showArchivedNotes);

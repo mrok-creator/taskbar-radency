@@ -1,6 +1,10 @@
 // input value
 export const formRef = document.querySelector("#notesForm");
-// export const toDoInputRef = headerRef.querySelector("#myInput");
+
+// Editor window ref
+
+export const modal = document.querySelector("[data-modal]");
+export const modalContentRef = document.querySelector("#modal");
 
 // render value
 export const notesListRef = document.querySelector("#noteList");

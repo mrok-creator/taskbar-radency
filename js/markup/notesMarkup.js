@@ -22,7 +22,7 @@ export function createNoteMarkup({ id, date, title, text, type, dates }) {
           <td>${text}</td>
           <td>${dates}</td>
            <td class="btnThumb">
-            <button class="btn edit" type="button" data-id="${id}" data-action="edit">
+            <button class="btn edit" type="button" data-id="${id}" data-action="edit" data-modal-open>
               
             </button>
 
@@ -51,4 +51,38 @@ function returnLogo(type) {
     return "thought";
   }
   return;
+}
+
+export function createEditorMarkup({ id, title, text }) {
+  return `
+  <button type="button" class="modalBtn" data-modal-close>x</button>  
+  <form id="edit" class="form" data-id='${id}'>
+      <label for="title" class="input-title"> Change your note: </label>
+
+      <label for="content" class="input-title">
+        Change content of your note:
+      </label>
+
+      <label for="types" class="input-title"> Choose a type: </label>
+
+      <input
+        type="text"
+        placeholder="${title}"
+        name="title"
+        class="input"
+      />
+      <input type="text" placeholder="${text}" name="content" class="input" />
+
+      <select id="type" name="types" size="1" class="input">
+        <option value="idea">Idea</option>
+        <option value="task">Task</option>
+        <option value="quote">Quote</option>
+        <option value="thought">Random Thought</option>
+      </select>
+
+      <button type="submit" class="addBtn" data-action='edit' >Edit</button>
+      
+    </form>
+
+  `;
 }

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <form id="notesForm" class="header">
+    <form id="notesForm" class="form">
       <label for="title" class="input-title"> Name your note: </label>
 
       <label for="content" class="input-title">
@@ -55,9 +55,7 @@
       <tbody id="noteList"></tbody>
     </table>
 
-    <!-- modal  -->
-
-    <!-- fixed content info -->
+    <!--  content info -->
     <table class="table" style="text-align: center">
       <thead>
         <tr>
@@ -167,6 +165,11 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- modal -->
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal" id="modal"></div>
+    </div>
 
     <script src="./js/index.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>

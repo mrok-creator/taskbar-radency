@@ -1,4 +1,4 @@
-import { archiveListRef } from "./shared/refs.js";
+import { modal, modalContentRef } from "./shared/refs.js";
 
 import { archivedMarkup } from "./markup/archiveNoteMarkup.js";
 
@@ -16,7 +16,6 @@ function openModal(data) {
       if (event.code !== "Escape") return;
       document.removeEventListener("click", unzipNote);
       instance.close();
-      // archiveListRef.removeEventListener("click", unzipNote);
     });
   }
 }
@@ -30,3 +29,18 @@ export function showArchivedNotes(e) {
   const markup = archivedMarkup(type);
   openModal(markup);
 }
+
+export function toggleModal() {
+  modal.classList.toggle("is-hidden");
+  document.body.classList.toggle("modal-open");
+}
+
+export function openNoteEditor(data) {
+  //  modalContentRef.innerHTML = '';
+  modalContentRef.innerHTML = data;
+  toggleModal();
+}
+
+// export function closeNoteEditor() {
+//   toggleModal();
+// }
