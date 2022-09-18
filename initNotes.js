@@ -28,7 +28,7 @@ export default [
     date: "Sat Sep 17 2022",
     title: "План",
     text: "Капкан",
-    type: "random-thought",
+    type: "thought",
     dates: "",
   },
   {

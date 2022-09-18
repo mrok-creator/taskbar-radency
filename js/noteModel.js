@@ -8,6 +8,8 @@ import {
   deleteFromArchiveStorage,
 } from "./localeStorage.js";
 
+import { insertActiveNotesCount } from "./counter.js";
+
 import { notesListRef } from "./shared/refs.js";
 
 export function createNoteData(data) {
@@ -47,6 +49,14 @@ export function addNewNote(data) {
   addMarkup(markup);
 }
 
+export function editNotes(e) {
+  if (e.target.dataset.action !== "zip") {
+    return;
+  }
+  const noteId = e.target.dataset.id;
+  const noteData = getFromStorage().filter((item) => item.id === noteId)[0];
+}
+
 export function deleteNotes(e) {
   if (e.target.dataset.action !== "trash") {
     return;
@@ -55,6 +65,7 @@ export function deleteNotes(e) {
 
   deleteFromList(e.target);
   deleteFromStorage(noteId);
+  insertActiveNotesCount();
 }
 
 // archive notes
@@ -72,6 +83,7 @@ export function addNotesToArchive(e) {
 
   deleteFromList(e.target);
   deleteFromStorage(noteId);
+  insertActiveNotesCount();
 }
 
 export function unzipNote(e) {
@@ -84,11 +96,12 @@ export function unzipNote(e) {
 
   const noteData = getFromArchivedStorage(type).filter(
     (item) => item.id === id
-  );
+  )[0];
 
-  addToStorage(...noteData);
+  addToStorage(noteData);
+  addNewNote(noteData);
 
   deleteFromList(e.target);
   deleteFromArchiveStorage(type, id);
-  window.location.reload();
+  insertActiveNotesCount();
 }

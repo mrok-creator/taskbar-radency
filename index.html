@@ -34,7 +34,7 @@
         <option value="idea">Idea</option>
         <option value="task">Task</option>
         <option value="quote">Quote</option>
-        <option value="random-thought">Random Thought</option>
+        <option value="thought">Random Thought</option>
       </select>
 
       <button type="submit" class="addBtn">Add</button>
@@ -58,7 +58,7 @@
     <!-- modal  -->
 
     <!-- fixed content info -->
-    <table class="table">
+    <table class="table" style="text-align: center">
       <thead>
         <tr>
           <th>Note Category</th>
@@ -81,8 +81,8 @@
             </svg>
             Idea
           </td>
-          <td id="activeIdea">Active number</td>
-          <td id="archivedIdea">Archived number</td>
+          <td id="idea" style="text-align: center">Active number</td>
+          <td id="ideaArchived" style="text-align: center">Archived number</td>
           <td class="btnThumb">
             <button
               class="btn list"
@@ -104,8 +104,8 @@
             </svg>
             Task
           </td>
-          <td id="activeTask">Active number</td>
-          <td id="archivedTask">Archived number</td>
+          <td id="task" style="text-align: center">Active number</td>
+          <td id="taskArchived" style="text-align: center">Archived number</td>
           <td class="btnThumb">
             <button
               class="btn list"
@@ -127,8 +127,8 @@
             </svg>
             Quote
           </td>
-          <td id="activeQuote">Active number</td>
-          <td id="archivedQuote">Archived number</td>
+          <td id="quote" style="text-align: center">Active number</td>
+          <td id="quoteArchived" style="text-align: center">Archived number</td>
           <td class="btnThumb">
             <button
               class="btn list"
@@ -146,18 +146,22 @@
               height="30"
               aria-label="Notes type icon"
             >
-              <use class="" href="./images/svg/sprite.svg#random-thought"></use>
+              <use class="" href="./images/svg/sprite.svg#thought"></use>
             </svg>
             Random Thought
           </td>
-          <td id="activeThought">Active number</td>
-          <td id="archivedThought">Archived number</td>
+          <td id="thought" style="text-align: center">
+            Number of active notes
+          </td>
+          <td id="thoughtArchived" style="text-align: center">
+            Number of archived notes
+          </td>
           <td class="btnThumb">
             <button
               class="btn list"
               type="button"
               data-action="showList"
-              data-type="random-thought"
+              data-type="thought"
             ></button>
           </td>
         </tr>

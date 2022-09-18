@@ -9,11 +9,13 @@ import {
   addNotesToArchive,
 } from "./noteModel.js";
 import { showArchivedNotes } from "./modal.js";
+import { insertActiveNotesCount } from "./counter.js";
 
 import initialNotes from "../initNotes.js";
 
 function init() {
   const notes = getFromStorage();
+  insertActiveNotesCount();
 
   if (notes.length > 0) {
     addNewNote(notes);
@@ -21,6 +23,7 @@ function init() {
   }
   addToStorage(...initialNotes);
   addNewNote(initialNotes);
+  insertActiveNotesCount();
 }
 
 function onSubmitCreate(event) {
@@ -42,6 +45,7 @@ function onSubmitCreate(event) {
   });
   addToStorage(note);
   addNewNote(note);
+  insertActiveNotesCount();
   event.currentTarget.reset();
 }
 

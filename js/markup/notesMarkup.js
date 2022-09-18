@@ -47,8 +47,8 @@ function returnLogo(type) {
   if (type === "quote") {
     return "quote";
   }
-  if (type === "random-thought") {
-    return "random-thought";
+  if (type === "thought") {
+    return "thought";
   }
   return;
 }
