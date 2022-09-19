@@ -101,11 +101,10 @@ function confirmEditions(e) {
   //   type: type.toString(),
   //   dates: "",
 
-  console.log("before=======>", note);
-  if (title.value.trim() > 0) {
+  if (title.value.trim().length > 0) {
     note.title = title.value;
   }
-  if (content.value.trim() > 0) {
+  if (content.value.trim().length > 0) {
     note.text = content.value;
   }
   if (note.type !== types.value) {
@@ -117,8 +116,6 @@ function confirmEditions(e) {
     note.dates = `from:${note.date} to:${newDate}`;
     note.date = newDate;
   }
-
-  console.log("after=======>", note);
 
   deleteFromStorage(id);
   deleteFromList(notesListRef, id);
