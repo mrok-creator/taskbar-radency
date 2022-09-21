@@ -1,4 +1,4 @@
-import { KEY_LOCAL_STORAGE, KEY_LOCAL_ARCHIVE } from "./shared/constante.js";
+import { KEY_LOCAL_STORAGE, KEY_LOCAL_ARCHIVE } from "./shared/constant.js";
 
 export function addToStorage(...args) {
   const storageData = getFromStorage();

@@ -42,10 +42,7 @@ function getNoteData(id, type = "") {
   } else {
     note = getFromArchivedStorage(type).filter((item) => item.id === id)[0];
   }
-  // let noteList = getFromStorage();
-  // if (noteList.length > 0) {
-  //   noteList = noteList.filter((item) => item.id === id)[0];
-  // }
+
   return { id, note: { ...note } };
 }
 
@@ -97,18 +94,10 @@ function confirmEditions(e) {
       "Are you sure you want to leave the note without change?"
     );
     if (sure) {
-      // closeNoteEditor();
       toggleModal();
       return;
     } else return;
   }
-
-  // id: Date.now().toString(),
-  //   date: date.toDateString(),
-  //   title: title.toString(),
-  //   text: text.toString(),
-  //   type: type.toString(),
-  //   dates: "",
 
   if (title.value.trim().length > 0) {
     note.title = title.value;

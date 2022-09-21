@@ -36,11 +36,6 @@ export function toggleModal() {
 }
 
 export function openNoteEditor(data) {
-  //  modalContentRef.innerHTML = '';
   modalContentRef.innerHTML = data;
   toggleModal();
 }
-
-// export function closeNoteEditor() {
-//   toggleModal();
-// }

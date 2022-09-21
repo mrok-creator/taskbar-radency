@@ -62,8 +62,5 @@ notesListRef.addEventListener("click", addNotesToArchive);
 // editor listener
 notesListRef.addEventListener("click", editNotes);
 
-// const editorFormRef = modalContentRef.querySelector("#edit");
-// editorFormRef.addEventListener("submit", confirmEditions);
-
 //  listener for work with archived data
 infoListRef.addEventListener("click", showArchivedNotes);
