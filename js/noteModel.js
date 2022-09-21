@@ -35,8 +35,17 @@ export function addMarkup(data) {
   notesListRef.insertAdjacentHTML("beforeend", data);
 }
 
-function getNodeData(id) {
-  const note = getFromStorage().filter((item) => item.id === id)[0];
+function getNoteData(id, type = "") {
+  let note = null;
+  if (!type) {
+    note = getFromStorage().filter((item) => item.id === id)[0];
+  } else {
+    note = getFromArchivedStorage(type).filter((item) => item.id === id)[0];
+  }
+  // let noteList = getFromStorage();
+  // if (noteList.length > 0) {
+  //   noteList = noteList.filter((item) => item.id === id)[0];
+  // }
   return { id, note: { ...note } };
 }
 
@@ -63,7 +72,7 @@ export function editNotes(e) {
   if (e.target.dataset.action !== "edit") {
     return;
   }
-  const { note } = getNodeData(e.target.dataset.id);
+  const { note } = getNoteData(e.target.dataset.id);
 
   const markup = createEditorMarkup(note);
   openNoteEditor(markup);
@@ -77,7 +86,7 @@ function confirmEditions(e) {
     elements: { title, content, types },
   } = e.currentTarget;
 
-  const { id, note } = getNodeData(e.target.dataset.id);
+  const { id, note } = getNoteData(e.target.dataset.id);
 
   if (
     title.value.trim() === "" &&
@@ -150,7 +159,7 @@ export function addNotesToArchive(e) {
     return;
   }
 
-  const { id, note } = getNodeData(e.target.dataset.id);
+  const { id, note } = getNoteData(e.target.dataset.id);
 
   addToArchiveStorage(note.type, note);
 
@@ -167,12 +176,14 @@ export function unzipNote(e) {
   // get required info
   const { id, type } = e.target.dataset;
 
-  const { note } = getNodeData(id);
+  const { note } = getNoteData(id, type);
 
   addToStorage(note);
   addNewNote(note);
 
-  deleteFromList(e.currentTarget, id);
+  const parent = document.querySelector("#archiveList");
+  deleteFromList(parent, id);
+
   deleteFromArchiveStorage(type, id);
   insertActiveNotesCount();
 }
