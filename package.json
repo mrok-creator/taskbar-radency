@@ -1,0 +1,10 @@
+{
+  "name": "taskbar-radency",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mrok-creator/taskbar-radency.git",
+  "author": "Kasianenko Oleksandr <sanekkas@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {}
+}
